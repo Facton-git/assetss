@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send OTP Email</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<div class="center-screen">
+
+  <div class="card">
+
+    <div class="brand">📧 Email Verification</div>
+
+    <h1>Send OTP to Email</h1>
+
+    <p class="muted">Enter your email address</p>
+
+    <label>Email Address</label>
+
+    <input id="email" type="email" placeholder="example@company.com">
+
+    <small id="emailWarn" style="color:red; display:block; margin-top:5px;"></small>
+
+    <button class="btn primary" onclick="sendEmailOtp()">
+      Send OTP
+    </button>
+
+    <a class="link" href="index.html">Back</a>
+
+  </div>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+function sendEmailOtp() {
+  const email = document.getElementById("email");
+  const warn = document.getElementById("emailWarn");
+
+  const value = email.value.trim();
+
+  if (value === "") {
+    warn.innerText = "Email is required";
+    return;
+  }
+
+  if (!value.includes("@")) {
+    warn.innerText = "Email must include @ (example: user@gmail.com)";
+    return;
+  }
+
+  if (!value.includes(".")) {
+    warn.innerText = "Email must include domain (example: .com)";
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    warn.innerText = "Invalid email format";
+    return;
+  }
+
+  warn.innerText = "";
+
+  localStorage.setItem("otp_target", value);
+  localStorage.setItem("otp_code", "123456");
+  localStorage.setItem("otp_type", "email");
+
+  window.location.href = "validate-otp.html";
+}
+</script>
+
+</body>
+</html>

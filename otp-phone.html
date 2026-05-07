@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send OTP Phone</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<div class="center-screen">
+
+  <div class="card">
+
+    <div class="brand">📱 Phone Verification</div>
+
+    <h1>Send OTP to Phone</h1>
+
+    <p class="muted">Enter your phone number</p>
+
+    <label>Phone Number</label>
+
+    <input id="phone" type="text" placeholder="09000000000">
+
+    <small id="phoneWarn" style="color:red; display:block; margin-top:5px;"></small>
+
+    <button class="btn primary" onclick="sendPhoneOtp()">
+      Send OTP
+    </button>
+
+    <a class="link" href="index.html">Back</a>
+
+  </div>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+function sendPhoneOtp() {
+  const phone = document.getElementById("phone");
+  const warn = document.getElementById("phoneWarn");
+
+  const value = phone.value.trim();
+
+  if (!/^[0-9+]+$/.test(value) || value.length < 5) {
+    warn.innerText = "Invalid phone number";
+    return;
+  }
+
+  warn.innerText = "";
+
+  localStorage.setItem("otp_target", value);
+  localStorage.setItem("otp_code", "123456");
+
+  window.location.href = "validate-otp.html";
+}
+</script>
+
+</body>
+</html>

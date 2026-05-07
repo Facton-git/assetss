@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Validate OTP</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<div class="center-screen">
+
+  <div class="card">
+
+    <div class="brand">🔐 OTP Verification</div>
+
+    <h1>Validate OTP</h1>
+
+    <p class="muted">
+      Code sent to:
+      <strong id="otpTarget"></strong>
+    </p>
+
+    <div class="success">
+      Prototype OTP: <strong>123456</strong>
+    </div>
+
+    <div class="otp-box">
+      <input class="otp" maxlength="1">
+      <input class="otp" maxlength="1">
+      <input class="otp" maxlength="1">
+      <input class="otp" maxlength="1">
+      <input class="otp" maxlength="1">
+      <input class="otp" maxlength="1">
+    </div>
+
+    <button class="btn primary" onclick="validateOtp()">
+      Verify OTP
+    </button>
+
+    <p id="message" class="muted" style="margin-top:15px; text-align:center;"></p>
+
+    <a class="link" href="index.html">Back</a>
+
+  </div>
+
+</div>
+
+<script>
+function loadOtpTarget() {
+  const el = document.getElementById("otpTarget");
+  const value = localStorage.getItem("otp_target");
+  el.innerText = value || "";
+}
+
+function validateOtp() {
+  const inputs = document.querySelectorAll(".otp");
+  let code = "";
+
+  inputs.forEach(i => code += i.value);
+
+  const real = localStorage.getItem("otp_code");
+  const msg = document.getElementById("message");
+
+  if (code.length !== 6) {
+    msg.style.color = "red";
+    msg.innerText = "Enter 6-digit OTP";
+    return;
+  }
+
+  if (code === real) {
+    msg.style.color = "green";
+    msg.innerText = "OTP VERIFIED ✅";
+
+    setTimeout(() => {
+      window.location.href = "mailbox.html";
+    }, 900);
+
+  } else {
+    msg.style.color = "red";
+    msg.innerText = "Wrong OTP ❌";
+  }
+}
+
+document.addEventListener("input", function (e) {
+  if (e.target.classList.contains("otp") && e.target.value.length === 1) {
+    const next = e.target.nextElementSibling;
+    if (next) next.focus();
+  }
+});
+
+loadOtpTarget();
+</script>
+
+</body>
+</html>

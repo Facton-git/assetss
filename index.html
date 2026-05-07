@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JaySecure App Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles.css">
+
+</head>
+
+<body>
+
+    <div class="center-screen">
+
+        <div class="card">
+
+            <!-- BRAND -->
+            <div class="brand">
+                🐝 JaySecure App Hub
+            </div>
+
+            <!-- TITLE -->
+            <h1>
+                Welcome to JaySecure
+            </h1>
+
+            <!-- DESCRIPTION -->
+            <p class="muted">
+                Access your verification, mailbox,
+                and AI assistant tools from one dashboard.
+            </p>
+
+            <!-- NAVIGATION -->
+            <a class="btn primary" href="otp-phone.html">
+                📱 Send OTP via SMS
+            </a>
+
+            <a class="btn light" href="otp-email.html">
+                📧 Send OTP via Email
+            </a>
+
+            <a class="btn light" href="validate-otp.html">
+                🔐 Validate OTP
+            </a>
+
+            <a class="btn light" href="mailbox.html">
+                📬 Open Mailbox
+            </a>
+
+            <a class="btn light" href="ai-chatbot.html">
+                🤖 AI Chatbot
+            </a>
+
+            <br>
+
+            <hr>
+
+            <br>
+
+            <!-- GOOGLE LOGIN -->
+            <button
+                class="btn google"
+                onclick="loginWithGoogle()">
+
+                <img
+                    src="./assets/Google_Favicon_2025.svg.webp"
+                    alt="Google"
+                    height="32">
+
+                Login with Google Account
+
+            </button>
+
+            <!-- NOTE -->
+            <p class="note">
+
+                Prototype system built using
+                HTML, CSS, JavaScript,
+                and localStorage.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JS -->
+    <script src="assets/app.js"></script>
+
+</body>
+
+</html>
